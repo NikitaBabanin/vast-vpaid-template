@@ -2,7 +2,7 @@
 
 In this repository you will find a basic example of writing Video.js the player, connecting VAST to it, and using VAST together with VPAID.
 
-## For testing AVAST tags
+## For testing VAST tags
 
 [IMA SDK](https://developers.google.com/interactive-media-ads/docs/sdks/html5/client-side/vastinspector) |
 
