@@ -11,17 +11,21 @@
     <div class="container">
       <h1>Player</h1>
 
-      <video width="400" height="300" poster="" id="video-player">
+      <video width="700" height="300" poster="" id="video-player">
         <source src="./video/nature.mp4" type="video/mp4" />
       </video>
 
-      <div><button id="play">Play</button></div>
-      <div><button id="pause">Pause</button></div>
-      <div><button id="stop">Stop</button></div>
-      <div><button id="speed-up">Bustro</button></div>
-      <div><button id="speed-down">Medleno</button></div>
-      <div><button id="speed-normal">Normal</button></div>
-      <div><input type="range" id="volume" min="0" max="100" />Zvuk</div>
+      <div class="wrapper-button">
+        <div class="volume">
+          <input type="range" id="volume" min="0" max="100" />
+        </div>
+        <div><button id="play">Play</button></div>
+        <div><button id="pause">Pause</button></div>
+        <div><button id="stop">Stop</button></div>
+        <div><button id="speed-up">Bustro</button></div>
+        <div><button id="speed-down">Medleno</button></div>
+        <div><button id="speed-normal">Normal</button></div>
+      </div>
     </div>
 
     <script src="./js/index.js"></script>
