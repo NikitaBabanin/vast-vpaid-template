@@ -1,9 +1,0 @@
-<VAST version="3.0">
-  <Ad id="SWFt">
-    <Wrapper>
-     <AdSystem>Our AdSystem</AdSystem>
-     <Impression><![CDATA[https://adserver.com/track/impression]]></Impression>
-     <VASTAdTagURI><![CDATA[3.xml]]></VASTAdTagURI>
-    </Wrapper>
-  </Ad>
- </VAST>
