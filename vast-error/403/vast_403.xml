@@ -1,0 +1,66 @@
+<VAST version="3.0">
+    <Ad id="1234567">
+        <InLine>
+            <AdSystem>GDFP</AdSystem>
+            <AdTitle>Linear VPAID</AdTitle>
+            <Description>Vpaid Linear Video Ad</Description>
+            <Error>
+                <![CDATA[ https://pubads.g.doubleclick.net/pagead/interaction/?ai=BMldlewauYKPxF5PlywWlxILIDfDYj-sGAAAAEAEgqN27JjgAWNjGssXXAWCl_ueO4CK6AQo3Mjh4OTBfeG1syAEFwAIC4AIA6gIlLzEyNDMxOTA5Ni9leHRlcm5hbC9zaW5nbGVfYWRfc2FtcGxlc_gCgtIegAMBkAOEB5gDrAKoAwHgBAHSBQYQqPa5zAKQBgGgBiOoB-zVG6gH89EbqAeW2BvYBwHgBwvSCAcIgAEQARgd2AgCgAoFmAsB0BUBgBcB&sigh=y8SXbX-6kuE&label=videoplayfailed[ERRORCODE] ]]>
+            </Error>
+            <Impression>http://www.example.com/impression</Impression>
+            <Creatives>
+                <Creative sequence="1">
+                <Linear>
+                    <Duration>00:00:13</Duration>
+                    <TrackingEvents>
+                        <Tracking event="start">http://www.example.com/start</Tracking>
+                        <Tracking event="firstQuartile">http://www.example.com/firstQuartile</Tracking>
+                        <Tracking event="midpoint">http://www.example.com/midpoint</Tracking>
+                        <Tracking event="thirdQuartile">http://www.example.com/thirdQuartile</Tracking>
+                        <Tracking event="complete">http://www.example.com/complete</Tracking>
+                        <Tracking event="mute">http://www.example.com/mute</Tracking>
+                        <Tracking event="unmute">http://www.example.com/unmute</Tracking>
+                        <Tracking event="rewind">http://www.example.com/rewind</Tracking>
+                        <Tracking event="pause">http://www.example.com/pause</Tracking>
+                        <Tracking event="resume">http://www.example.com/resume</Tracking>
+                        <Tracking event="fullscreen">http://www.example.com/fullscreen</Tracking>
+                        <Tracking event="creativeView">http://www.example.com/creativeView</Tracking>
+                        <Tracking event="acceptInvitation">http://www.example.com/acceptInvitation</Tracking>
+                    </TrackingEvents>
+                    <VideoClicks>
+                        <ClickThrough id="123">http://wikipedia.com</ClickThrough>
+                        <ClickTracking id="123">http://www.example.com/click</ClickTracking>
+                    </VideoClicks>
+                    <MediaFiles>
+                           <MediaFile id="GDFP" delivery="progressive" width="1280" height="720" type="video/mp4" bitrate="533" scalable="true" maintainAspectRatio="true">
+                            <![CDATA[ https://redirector.gvt1.com/videoplayback/id/b96674ee53e47835/itag/15/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2Fmp4/ctier/L/ip/0.0.0.0/ipbits/0/expire/1622038754/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime,ctier/signature/675A19CB083054D979709976B3A60E83DC8C0EC2.68D637FD165C137355A8F0EE0F77D17FCC4C5CB0/key/ck2/file/file.mp4 ]]>
+                        </MediaFile>
+                        <MediaFile id="GDFP" delivery="progressive" width="176" height="144" type="video/3gpp" bitrate="36" scalable="true" maintainAspectRatio="true">
+                            <![CDATA[ https://redirector.gvt1.com/videoplayback/id/b96674ee53e47835/itag/17/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2F3gpp/ctier/L/ip/0.0.0.0/ipbits/0/expire/1622038754/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime,ctier/signature/8517849A17DE938F52AC51DF5097BA3CD8AE8AC7.AADD9160F6E026E05B08204B001602A8479289F3/key/ck2/file/file.3gp ]]>
+                        </MediaFile>
+                        <MediaFile id="GDFP" delivery="progressive" width="640" height="360" type="video/mp4" bitrate="122" scalable="true" maintainAspectRatio="true">
+                            <![CDATA[ https://redirector.gvt1.com/videoplayback/id/b96674ee53e47835/itag/18/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2Fmp4/ctier/L/ip/0.0.0.0/ipbits/0/expire/1622038754/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime,ctier/signature/43B2FF7602A49AA71B653B8662B5698E9B0F9910.095B56317E592E31F4FE144C093226DA9D03EBC6/key/ck2/file/file.mp4 ]]>
+                        </MediaFile>
+                        <MediaFile id="GDFP" delivery="progressive" width="320" height="180" type="video/3gpp" bitrate="74" scalable="true" maintainAspectRatio="true">
+                            <![CDATA[ https://redirector.gvt1.com/videoplayback/id/b96674ee53e47835/itag/36/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2F3gpp/ctier/L/ip/0.0.0.0/ipbits/0/expire/1622038754/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime,ctier/signature/535252C74126AC84EFCCE6E15C04F3FDAE6D8CF1.0C6F7C254E58F75120A74D487752573EA4159008/key/ck2/file/file.3gp ]]>
+                        </MediaFile> 
+                        <MediaFile id="GDFP" delivery="progressive" width="640" height="360" type="video/webm" bitrate="125" scalable="true" maintainAspectRatio="true">
+                            <![CDATA[ https://redirector.gvt1.com/videoplayback/id/b96674ee53e47835/itag/43/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2Fwebm/ctier/L/ip/0.0.0.0/ipbits/0/expire/1622038754/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime,ctier/signature/099F30123B62AEFE0333EB741DEEB5A75C585983.647CE8D9EC623C5E62C2CDF4BDF68B40803C9428/key/ck2/file/file.webm ]]>
+                        </MediaFile>
+                        <MediaFile id="GDFP" delivery="progressive" width="1280" height="720" type="video/mp4" bitrate="252" scalable="true" maintainAspectRatio="true">
+                            <![CDATA[ https://redirector.gvt1.com/videoplayback/id/b96674ee53e47835/itag/22/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2Fmp4/ctier/L/ip/0.0.0.0/ipbits/0/expire/1622038754/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime,ctier/signature/2DB8338610B5DEDAB2A50204EF32E2B437098EBC.994B477EB422BBA4A9BF1FB6E9A6A2D7DFF37BF1/key/ck2/file/file.mp4 ]]>
+                        </MediaFile>
+                        <MediaFile id="GDFP" delivery="progressive" width="1280" height="720" type="video/webm" bitrate="245" scalable="true" maintainAspectRatio="true">
+                            <![CDATA[ https://redirector.gvt1.com/videoplayback/id/b96674ee53e47835/itag/45/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2Fwebm/ctier/L/ip/0.0.0.0/ipbits/0/expire/1622038754/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime,ctier/signature/22AA2A2FF0086F5F681C9546D68D5BA3DF90C523.5DBDD7A16A8110E79C5ABCC6AED169893C65627E/key/ck2/file/file.webm ]]>
+                        </MediaFile> 
+                        <MediaFile id="GDFP" delivery="progressive" width="854" height="480" type="video/webm" bitrate="139" scalable="true" maintainAspectRatio="true">
+                            <![CDATA[ https://redirector.gvt1.com/videoplayback/id/b96674ee53e47835/itag/44/source/gfp_video_ads/requiressl/yes/acao/yes/mime/video%2Fwebm/ctier/L/ip/0.0.0.0/ipbits/0/expire/1622038754/sparams/ip,ipbits,expire,id,itag,source,requiressl,acao,mime,ctier/signature/12B18629B02AFF10F1C5386B4602365967922B45.6C0E425CEA0E08799070C2945031D6E5C9C4517D/key/ck2/file/file.webm ]]>
+                        </MediaFile>  
+                    </MediaFiles>
+                </Linear>
+                </Creative>
+                <Creative sequence="1"></Creative>
+            </Creatives>
+        </InLine>
+    </Ad>
+</VAST>

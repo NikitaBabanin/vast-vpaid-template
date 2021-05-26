@@ -1,1 +1,12 @@
-//There will be a 403 error
+<VAST version="3.0">
+  <Error>
+      <![CDATA[ https://pubads.g.doubleclick.net/pagead/interaction/?ai=BMldlewauYKPxF5PlywWlxILIDfDYj-sGAAAAEAEgqN27JjgAWNjGssXXAWCl_ueO4CK6AQo3Mjh4OTBfeG1syAEFwAIC4AIA6gIlLzEyNDMxOTA5Ni9leHRlcm5hbC9zaW5nbGVfYWRfc2FtcGxlc_gCgtIegAMBkAOEB5gDrAKoAwHgBAHSBQYQqPa5zAKQBgGgBiOoB-zVG6gH89EbqAeW2BvYBwHgBwvSCAcIgAEQARgd2AgCgAoFmAsB0BUBgBcB&sigh=y8SXbX-6kuE&label=videoplayfailed[ERRORCODE] ]]>
+  </Error>
+  <Ad id="SWFt">
+    <Wrapper>
+     <AdSystem>Our AdSystem</AdSystem>
+     <Impression><![CDATA[https://adserver.com/track/impression]]></Impression>
+     <VASTAdTagURI><![CDATA[https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dskippablelinear&correlator=[timestamp]]]></VASTAdTagURI>
+    </Wrapper>
+  </Ad>
+ </VAST>

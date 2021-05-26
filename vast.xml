@@ -4,7 +4,9 @@
             <AdSystem>GDFP</AdSystem>
             <AdTitle>Linear VPAID</AdTitle>
             <Description>Vpaid Linear Video Ad</Description>
-            <Error><h1>ERROR</h1></Error>
+            <Error>
+                <![CDATA[ https://pubads.g.doubleclick.net/pagead/interaction/?ai=BMldlewauYKPxF5PlywWlxILIDfDYj-sGAAAAEAEgqN27JjgAWNjGssXXAWCl_ueO4CK6AQo3Mjh4OTBfeG1syAEFwAIC4AIA6gIlLzEyNDMxOTA5Ni9leHRlcm5hbC9zaW5nbGVfYWRfc2FtcGxlc_gCgtIegAMBkAOEB5gDrAKoAwHgBAHSBQYQqPa5zAKQBgGgBiOoB-zVG6gH89EbqAeW2BvYBwHgBwvSCAcIgAEQARgd2AgCgAoFmAsB0BUBgBcB&sigh=y8SXbX-6kuE&label=videoplayfailed[ERRORCODE] ]]>
+            </Error>
             <Impression>http://www.example.com/impression</Impression>
             <Creatives>
                 <Creative sequence="1">
