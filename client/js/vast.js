@@ -11,13 +11,12 @@ function chackVastUrl() {
 
 function parseVastXml(vastUrl) {
   try {
-    const url = {
-      vastXml: vastUrl,
-    };
+    axios.get(vastUrl).then(({ data }) => {
+      var x2js = new X2JS();
+      var jsonObj = x2js.xml_str2json(data);
 
-    axios
-      .post("https://warm-fortress-44560.herokuapp.com/api/parse/", url)
-      .then((res) => dataPreparation(res.data));
+      console.log(jsonObj);
+    });
   } catch (err) {
     console.log("error", err.message);
   }
@@ -58,4 +57,6 @@ function wrapperNode() {
   console.log("wrapper");
 }
 
-function parseCreatives() {}
+function parseCreatives(creatives) {
+  console.log("creatives ", creatives);
+}
