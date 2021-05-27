@@ -1,3 +1,5 @@
+//https://www.cdnpkg.com/x2js?id=78499
+
 chackVastUrl();
 
 function chackVastUrl() {
@@ -14,7 +16,7 @@ function parseVastXml(vastUrl) {
     axios.get(vastUrl).then(({ data }) => {
       var x2js = new X2JS();
       var jsonObj = x2js.xml_str2json(data);
-
+      dataPreparation(jsonObj);
       console.log(jsonObj);
     });
   } catch (err) {
@@ -24,33 +26,23 @@ function parseVastXml(vastUrl) {
 
 // Search for the root node (Wrapper or InLine)
 function dataPreparation(data) {
-  let vastRoot = data.vastJson.elements[0].elements;
+  let adType = data.VAST.Ad;
 
-  //get Ad tag
-  let adTag = vastRoot.filter((item) => item.name === "Ad")[0];
-
-  //get wrapper or InLine.
-  //It is assumed that there will be only one nested element
-  let typeOfAd = adTag.elements[0];
-
-  //check wrapper or InLine
-  if (typeOfAd.name === "InLine") {
-    inLineNode(typeOfAd.elements);
-  } else if (typeOfAd.name === "Wrapper") {
-    wrapperNode();
-  } else {
-    return;
+  for (element in adType) {
+    if (element === "InLine") {
+      inLineNode(adType[element]);
+    } else if (element === "Wrapper") {
+      wrapperNode(adType[element]);
+    } else {
+      return;
+    }
   }
 }
 
 function inLineNode(inlineElements) {
-  console.log("inline ", inlineElements);
+  // console.log("inline ", inlineElements);
 
-  inlineElements.forEach((element) => {
-    if (element.name === "Creatives") {
-      parseCreatives(element);
-    }
-  });
+  parseCreatives(inlineElements.Creatives);
 }
 
 function wrapperNode() {
@@ -58,5 +50,26 @@ function wrapperNode() {
 }
 
 function parseCreatives(creatives) {
-  console.log("creatives ", creatives);
+  // console.log("creatives ", creatives);
+
+  const allCreatives = creatives.Creative;
+  for (creative in allCreatives) {
+    if (creative === "Linear") {
+      linearCreative(allCreatives[creative]);
+    }
+  }
+}
+
+function linearCreative(creative) {
+  console.log("creative-linear ", creative);
+
+  const videoSelector = getDomElement("#video-player");
+
+  const mediaFiles = creative.MediaFiles.MediaFile;
+  console.log(videoSelector);
+  console.log(mediaFiles);
+}
+
+function getDomElement(selector) {
+  return document.querySelector(selector);
 }
