@@ -1,8 +1,28 @@
-//https://www.cdnpkg.com/x2js?id=78499
+/**
+ * https://www.cdnpkg.com/x2js?id=78499  - xml parser
+ *
+ * 1) chackVastUrl  - Checks if the link to vast was passed
+ *
+ * 2) parseVastXml  - Go here if there is a link.Download the xml and parse it
+ *
+ * 3) dataPreparation - Check wrapper or InLine
+ *
+ * 4) inLineNode - Retrieves creatives
+ *
+ * 5) parseCreatives - Checks the ad type and runs the appropriate method
+ *
+ * 6) linearCreative - get video content data and getting the media files
+ *
+ * 7) searchSuitableMediaFile - Search for the appropriate media file. There may be several of them. By default, we take the first one, if it does not work,
+ *                              we will run everything until it ends
+ *
+ * 8) launchingAds - launching ads
+ */
 
 const contentVideoPlayer = document.querySelector(".content");
 const videoPlayer = document.querySelector("#video-player");
 const videoSource = document.querySelector("#source-video-tag");
+const btnWrapper = document.querySelector(".wrapper-button");
 
 chackVastUrl();
 
@@ -21,7 +41,6 @@ function parseVastXml(vastUrl) {
       var x2js = new X2JS();
       var jsonObj = x2js.xml_str2json(data);
       dataPreparation(jsonObj);
-      console.log(jsonObj);
     });
   } catch (err) {
     console.log("error", err.message);
@@ -97,8 +116,21 @@ function searchSuitableMediaFile(mediaFiles, videoData, numberAttempts = 0) {
 function launchingAds(mediaFile) {
   console.log(mediaFile);
 
-  const videoAds = mediaFile.__cdata;
-  console.log(videoAds);
+  const srcVideoContent = videoSource.getAttribute("src");
+  videoPlayer.src = `${mediaFile.__cdata}`;
+  btnWrapper.style.display = "none";
+
+  console.log(videoPlayer.getAttribute("src"));
+
+  videoPlayer.addEventListener(
+    "ended",
+    () => {
+      videoPlayer.src = `${srcVideoContent}`;
+      btnWrapper.style.display = "flex";
+      play();
+    },
+    false
+  );
 }
 
 function stop() {

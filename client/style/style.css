@@ -8,8 +8,10 @@
   height: 360px;
 }
 .wrapper-button {
+  margin-top: -40px;
   display: flex;
-  margin: 20px 0;
+  z-index: 10000;
+  /* margin: 20px 0; */
 }
 .wrapper-button div {
   margin: 5px;
