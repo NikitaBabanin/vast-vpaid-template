@@ -19,10 +19,15 @@
  * 8) launchingAds - launching ads
  */
 
+//get dom selectors
 const contentVideoPlayer = document.querySelector(".content");
 const videoPlayer = document.querySelector("#video-player");
 const videoSource = document.querySelector("#source-video-tag");
 const btnWrapper = document.querySelector(".wrapper-button");
+
+//global variables
+let impressionUrl;
+let videoClickUrl;
 
 chackVastUrl();
 
@@ -40,6 +45,7 @@ function parseVastXml(vastUrl) {
     axios.get(vastUrl).then(({ data }) => {
       var x2js = new X2JS();
       var jsonObj = x2js.xml_str2json(data);
+      console.log(jsonObj);
       dataPreparation(jsonObj);
     });
   } catch (err) {
@@ -63,7 +69,8 @@ function dataPreparation(data) {
 }
 
 function inLineNode(inlineElements) {
-  // console.log("inline ", inlineElements);
+  //save impression url
+  impressionUrl = `${inlineElements.Impression.__cdata}`;
 
   parseCreatives(inlineElements.Creatives);
 }
@@ -85,6 +92,7 @@ function parseCreatives(creatives) {
 
 function linearCreative(creative) {
   const mediaFiles = creative.MediaFiles.MediaFile;
+  videoClickUrl = creative.VideoClicks.ClickThrough.__cdata;
 
   contentVideoData = {
     type: videoSource.getAttribute("type"),
@@ -118,7 +126,9 @@ function launchingAds(mediaFile) {
 
   const srcVideoContent = videoSource.getAttribute("src");
   videoPlayer.src = `${mediaFile.__cdata}`;
+  videoPlayer.addEventListener("click", clickVideoLink);
   btnWrapper.style.display = "none";
+  sendImpression();
 
   console.log(videoPlayer.getAttribute("src"));
 
@@ -127,10 +137,27 @@ function launchingAds(mediaFile) {
     () => {
       videoPlayer.src = `${srcVideoContent}`;
       btnWrapper.style.display = "flex";
+      videoPlayer.removeEventListener("click", clickVideoLink);
       play();
     },
     false
   );
+}
+
+function sendImpression() {
+  if (!impressionUrl) return;
+  try {
+    axios.get(impressionUrl).then((res) => {
+      console.log("Impression response ", res);
+    });
+  } catch (error) {
+    console.log("Error in sendImpression method ", error.message);
+  }
+}
+
+function clickVideoLink() {
+  if (!videoClickUrl) return;
+  document.location.href = `${videoClickUrl}`;
 }
 
 function stop() {
