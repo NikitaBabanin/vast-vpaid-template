@@ -1,12 +1,16 @@
 //https://www.cdnpkg.com/x2js?id=78499
 
+const contentVideoPlayer = document.querySelector(".content");
+const videoPlayer = document.querySelector("#video-player");
+const videoSource = document.querySelector("#source-video-tag");
+
 chackVastUrl();
 
 function chackVastUrl() {
-  let checkVastUrlData = document.querySelector("#video-player");
-  let vastUrl = checkVastUrlData.getAttribute("vastTag");
+  let vastUrl = videoPlayer.getAttribute("vastTag");
   console.log(vastUrl);
   if (vastUrl) {
+    stop();
     parseVastXml(vastUrl);
   }
 }
@@ -61,15 +65,47 @@ function parseCreatives(creatives) {
 }
 
 function linearCreative(creative) {
-  console.log("creative-linear ", creative);
-
-  const videoSelector = getDomElement("#video-player");
-
   const mediaFiles = creative.MediaFiles.MediaFile;
-  console.log(videoSelector);
-  console.log(mediaFiles);
+
+  contentVideoData = {
+    type: videoSource.getAttribute("type"),
+    width: videoPlayer.getAttribute("width"),
+    height: videoPlayer.getAttribute("height"),
+  };
+
+  searchSuitableMediaFile(mediaFiles, contentVideoData);
 }
 
-function getDomElement(selector) {
-  return document.querySelector(selector);
+// There can be several media files.First, run the first media file, if it causes an error,
+// then pass numberAttempts++ and call the next media file in the array
+function searchSuitableMediaFile(mediaFiles, videoData, numberAttempts = 0) {
+  const suitableMediaFile = [];
+
+  mediaFiles.forEach((mediaFile) => {
+    if (
+      mediaFile._type == videoData.type &&
+      mediaFile._width == videoData.width
+    ) {
+      suitableMediaFile.push(mediaFile);
+    }
+  });
+
+  if (numberAttempts > suitableMediaFile.length) return;
+  launchingAds(suitableMediaFile[numberAttempts]);
+}
+
+function launchingAds(mediaFile) {
+  console.log(mediaFile);
+
+  const videoAds = mediaFile.__cdata;
+  console.log(videoAds);
+}
+
+function stop() {
+  videoPlayer.pause();
+  videoPlayer.currentTime = 0;
+}
+
+function play() {
+  videoPlayer.play();
 }
