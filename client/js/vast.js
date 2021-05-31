@@ -42,41 +42,58 @@ function chackVastUrl() {
 
 function parseVastXml(vastUrl) {
   try {
-    axios.get(vastUrl).then(({ data }) => {
-      var x2js = new X2JS();
-      var jsonObj = x2js.xml_str2json(data);
-      console.log(jsonObj);
-      dataPreparation(jsonObj);
-    });
+    axios
+      .get(vastUrl)
+      .then(({ data }) => {
+        var x2js = new X2JS();
+        var jsonObj = x2js.xml_str2json(data);
+        console.log("VAST : ", jsonObj);
+        dataPreparation(jsonObj);
+      })
+      .catch(() => console.log("get vast ERROR"));
   } catch (err) {
     console.log("error", err.message);
   }
 }
 
 // Search for the root node (Wrapper or InLine)
+//So far, it will work only for one node
 function dataPreparation(data) {
   let adType = data.VAST.Ad;
 
-  for (element in adType) {
-    if (element === "InLine") {
-      inLineNode(adType[element]);
-    } else if (element === "Wrapper") {
-      wrapperNode(adType[element]);
-    } else {
-      return;
+  if (Array.isArray(adType)) {
+    for (element in adType[0]) {
+      if (element === "InLine") {
+        inLineNode(adType[0][element]);
+      } else if (element === "Wrapper") {
+        wrapperNode(adType[0][element]);
+      } else {
+        console.log("ERROR in dataPreparation");
+      }
+    }
+  } else {
+    for (element in adType) {
+      if (element === "InLine") {
+        inLineNode(adType[element]);
+      } else if (element === "Wrapper") {
+        wrapperNode(adType[element]);
+      } else {
+        console.log("ERROR in dataPreparation");
+      }
     }
   }
 }
 
 function inLineNode(inlineElements) {
   //save impression url
+
   impressionUrl = `${inlineElements.Impression.__cdata}`;
 
   parseCreatives(inlineElements.Creatives);
 }
 
 function wrapperNode() {
-  console.log("wrapper");
+  console.log("This player does not support wrapper");
 }
 
 function parseCreatives(creatives) {
@@ -108,29 +125,43 @@ function linearCreative(creative) {
 function searchSuitableMediaFile(mediaFiles, videoData, numberAttempts = 0) {
   const suitableMediaFile = [];
 
+  if (!Array.isArray(mediaFiles)) {
+    if (
+      mediaFiles._type == videoData.type &&
+      mediaFiles._width == videoData.width &&
+      mediaFiles._type !== "application/javascript"
+    ) {
+      suitableMediaFile.push(mediaFiles);
+    } else if (mediaFiles._type === "application/javascript") {
+      console.log("This player does not support VPIAD");
+    }
+  }
+
   mediaFiles.forEach((mediaFile) => {
     if (
       mediaFile._type == videoData.type &&
-      mediaFile._width == videoData.width
+      mediaFile._width == videoData.width &&
+      mediaFile._type !== "application/javascript"
     ) {
       suitableMediaFile.push(mediaFile);
+    } else if (mediaFile._type === "application/javascript") {
+      console.log("This player does not support VPIAD");
     }
   });
 
-  if (numberAttempts > suitableMediaFile.length) return;
+  if (numberAttempts > mediaFiles.length)
+    return console.log("There is no suitable media file");
+
   launchingAds(suitableMediaFile[numberAttempts]);
 }
 
 function launchingAds(mediaFile) {
-  console.log(mediaFile);
-
   const srcVideoContent = videoSource.getAttribute("src");
   videoPlayer.src = `${mediaFile.__cdata}`;
+
   videoPlayer.addEventListener("click", clickVideoLink);
   btnWrapper.style.display = "none";
   sendImpression();
-
-  console.log(videoPlayer.getAttribute("src"));
 
   videoPlayer.addEventListener(
     "ended",
